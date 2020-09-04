@@ -1,8 +1,11 @@
 package com.imaginatologintest.presentation.login
 
+import android.util.Log
+import android.view.View
 import com.imaginatologintest.databinding.ActivityLoginBinding
 import com.imaginatologintest.presentation.base.BaseActivity
 import com.imaginatologintest.R
+import com.imaginatologintest.data.remote.login.model.LoginRequest
 
 
 class LoginActivity : BaseActivity<ActivityLoginBinding>() {
@@ -12,5 +15,9 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>() {
     }
 
     override fun viewSetup() {
+        binding.loginData = LoginRequest()
+    }
+
+    fun login(view: View) {
     }
 }

@@ -1,11 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <data></data>
+    <data>
+
+        <variable
+            name="loginData"
+            type="com.imaginatologintest.data.remote.login.model.LoginRequest" />
+    </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/loginGuideStart"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="25dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/loginGuideEnd"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="25dp" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/loginUsernameHint"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/username"
+            app:errorEnabled="true"
+            app:layout_constraintBottom_toTopOf="@+id/loginPasswordHint"
+            app:layout_constraintEnd_toStartOf="@id/loginGuideEnd"
+            app:layout_constraintStart_toEndOf="@id/loginGuideStart"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/loginUsername"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:digits="@string/allowed_digits"
+                android:inputType="textPersonName"
+                android:maxLength="30"
+                android:text="@={loginData.username}" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/loginPasswordHint"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="@string/password"
+            app:errorEnabled="true"
+            app:layout_constraintBottom_toTopOf="@+id/loginBtn"
+            app:layout_constraintEnd_toStartOf="@id/loginGuideEnd"
+            app:layout_constraintStart_toEndOf="@id/loginGuideStart"
+            app:layout_constraintTop_toBottomOf="@+id/loginUsernameHint"
+            app:passwordToggleEnabled="true">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/loginPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:digits="@string/allowed_digits"
+                android:inputType="textPassword"
+                android:maxLength="16"
+                android:text="@={loginData.password}" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/loginBtn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:onClick="login"
+            android:text="@string/login"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/loginGuideEnd"
+            app:layout_constraintStart_toEndOf="@id/loginGuideStart"
+            app:layout_constraintTop_toBottomOf="@+id/loginPasswordHint" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
