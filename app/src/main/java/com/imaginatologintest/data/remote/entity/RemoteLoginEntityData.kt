@@ -1,6 +1,7 @@
 package com.imaginatologintest.data.remote.entity
 
 import android.content.Context
+import com.imaginatologintest.data.local.db.XaccData
 import com.imaginatologintest.data.remote.entity.login.LoginEntityData
 import com.imaginatologintest.data.remote.model.request.login.LoginRequest
 import com.imaginatologintest.data.remote.retrofit.BaseApi
@@ -36,7 +37,7 @@ class RemoteLoginEntityData(private val context: Context) : CommonRetrofit<BaseA
             .compose(applyServiceTransformer())
     }
 
-//    override fun saveUserXaccToLocal(xaccData: XaccData) {}
+    override fun saveUserXaccToLocal(xaccData: XaccData) {}
 
 
 }

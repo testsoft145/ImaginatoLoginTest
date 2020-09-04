@@ -17,7 +17,6 @@ class RequestInterceptor(context: Context) : Interceptor {
         val original = chain.request()
         val builder = original.newBuilder()
 
-        // TODO : This value will be change based on requirements.
         builder.addHeader(AppConstants.KEY_HEADER_IMSI, IMSI)
         builder.addHeader(AppConstants.KEY_HEADER_IMEI, IMEI)
 

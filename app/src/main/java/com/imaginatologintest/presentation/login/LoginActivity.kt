@@ -44,9 +44,9 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>() {
     }
 
     fun login(v: View) {
-        showLoader()
         if (checkValidation()) {
-            loginViewModel?.checkValidationAndCallLoginWs(context, binding.loginData!!)
+            showLoader()
+            loginViewModel?.callLogin(binding.loginData!!)
         }
     }
 

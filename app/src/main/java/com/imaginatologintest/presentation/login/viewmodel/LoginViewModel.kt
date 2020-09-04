@@ -14,7 +14,7 @@ class LoginViewModel @Inject constructor(private val loginUseCase: LoginUseCase)
 
     internal var mutableLoginLiveData = MutableLiveData<String>()
 
-    fun checkValidationAndCallLoginWs(context: Context, loginRequest: LoginRequest) {
+    fun callLogin(loginRequest: LoginRequest) {
         loginUseCase.executeFlowable(object : ResourceSubscriber<LoginData>() {
             override fun onNext(loginData: LoginData) {
                 mutableLoginLiveData.postValue(loginData.errorMessage)
