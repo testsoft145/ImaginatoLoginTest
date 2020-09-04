@@ -1,4 +1,4 @@
-package com.imaginatologintest.data.remote.login.model
+package com.imaginatologintest.data.remote.model.request.login
 
 import com.google.gson.annotations.SerializedName
 

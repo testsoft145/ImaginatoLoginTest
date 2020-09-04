@@ -1,4 +1,4 @@
-package com.imaginatologintest.di.component.module
+package com.imaginatologintest.di.module
 
 import com.imaginatologintest.presentation.login.LoginActivity
 import dagger.Module

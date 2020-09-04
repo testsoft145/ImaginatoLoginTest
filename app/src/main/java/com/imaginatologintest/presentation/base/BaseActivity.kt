@@ -17,7 +17,7 @@ abstract class BaseActivity<B : ViewDataBinding> : DaggerAppCompatActivity() {
     private var viewDialog: ViewDialog? = null
     private var _binding: B? = null
 
-    protected var mProgressDialog: Dialog? = null
+    var mProgressDialog: Dialog? = null
 
     protected val binding: B
         get() = _binding ?: throw IllegalStateException(
@@ -27,9 +27,13 @@ abstract class BaseActivity<B : ViewDataBinding> : DaggerAppCompatActivity() {
     abstract val layout: Int
         @LayoutRes get
 
+    abstract fun initActivity()
+
     abstract fun viewModelSetup()
 
     abstract fun viewSetup()
+
+    abstract fun observers()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,28 +41,21 @@ abstract class BaseActivity<B : ViewDataBinding> : DaggerAppCompatActivity() {
             it.lifecycleOwner = this
             _binding = it
         }
-        viewModelSetup()
-        viewDialog = ViewDialog(this)
+        initActivity()
         viewSetup()
+        viewModelSetup()
+        observers()
+        viewDialog = ViewDialog(this)
     }
 
     open fun showLoader() {
-        if (mProgressDialog == null) {
-            mProgressDialog = Dialog(this@BaseActivity)
-            mProgressDialog?.setContentView(R.layout.progress_dialog)
-            mProgressDialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-            mProgressDialog?.setCancelable(false)
-        }
-        if (!(mProgressDialog?.isShowing!!)) {
-            mProgressDialog?.show()
-        }
-
+        viewDialog?.showDialog()
 
 
     }
 
     open fun dismissLoader() {
-        mProgressDialog?.dismiss()
+        viewDialog?.hideDialog()
     }
 
 }

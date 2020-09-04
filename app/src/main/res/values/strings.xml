@@ -4,4 +4,9 @@
     <string name="password">Password</string>
     <string name="login">Login</string>
     <string name="allowed_digits">abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890</string>
+    <string name="txt_no_network">\"No network connecton available.\"</string>
+    <string name="no_internet">No internet connection</string>
+    <string name="invalid_login">Please enter valid email address</string>
+    <string name="enter_username">Please enter username</string>
+    <string name="enter_password">Please enter password</string>
 </resources>
